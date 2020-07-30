@@ -1,0 +1,31 @@
+.sidebar{
+    /*position: relative;*/
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    padding-bottom: 2rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background: url('../../assets/img/rancho_la_tuna_sidebar.png') no-repeat;
+}
+  
+  /*@supports ((position: -webkit-sticky) or (position: sticky)) {
+    .sidebar-sticky {
+      position: -webkit-sticky;
+      position: sticky;
+    }
+  }
+  
+  .sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .sidebar .nav-link.active {
+    color: #007bff;
+  }
+  
+  .sidebar-heading {
+    font-size: .75rem;
+    text-transform: uppercase;
+  }*/

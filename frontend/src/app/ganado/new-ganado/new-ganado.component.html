@@ -1,0 +1,89 @@
+<div class="col-md-12">
+    <form (ngSubmit)="submit()" [formGroup]="form" autocomplete="off">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label>No. arete</label>
+                    <input type="number" class="form-control" formControlName="noArete" placeholder="No. arete" required>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>No. animal</label>
+                    <input type="number" class="form-control" formControlName="noAnimal" placeholder="No. animal" value="michael23" required>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Edad</label>
+                    <input type="text" class="form-control" formControlName="edad" placeholder="Edad" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Sexo</label>
+                    <select id="sexo" class="form-control" formControlName="sexo" placeholder="--Seleccione--" required>
+                        <option value="-1" disabled selected>--Seleccione--</option>
+                        <option *ngFor="let item of sexos" [value]="item.value">{{ item.text }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Tipo</label>
+                    <select id="tipo" class="form-control" formControlName="tipo" placeholder="--Seleccione--" required>
+                        <option value="-1" disabled selected>--Seleccione--</option>
+                        <option *ngFor="let item of tipos" [value]="item.value">{{ item.text }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Color</label>
+                    <select id="color" class="form-control" formControlName="color"  placeholder="--Seleccione--" required>
+                        <option value="-1" disabled selected>--Seleccione--</option>
+                        <option *ngFor="let item of colores" [value]="item.value">{{ item.text }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Situación</label>
+                    <select id="situacion" class="form-control" formControlName="situacion" placeholder="--Seleccione--" required>
+                        <option value="-1" disabled selected>--Seleccione--</option>
+                        <option *ngFor="let item of situaciones" [value]="item.value">{{ item.text }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Compra / Crianza</label>
+                    <select id="crianzaCompra" class="form-control" formControlName="crianzaCompra"  placeholder="--Seleccione--" required>
+                        <option value="-1" disabled selected>--Seleccione--</option>
+                        <option *ngFor="let item of crianzasCompras" [value]="item.value">{{ item.text }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Observaciones</label>
+                    <textarea rows="5" class="form-control" formControlName="observaciones" placeholder="Observaciones"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="btn-toolbar pull-right">
+            <button (click)="back()" class="btn btn-default btn-fill"> Cancelar </button>
+            <button type="submit" class="btn btn-info btn-fill"> Guardar </button>
+        </div>
+        <div class="clearfix"></div>
+    </form>
+</div>

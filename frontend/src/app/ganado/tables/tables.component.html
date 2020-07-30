@@ -1,0 +1,46 @@
+
+<div class="text-right mb-2">
+    <a [routerLink]="['./new']" routerLinkActive="router-link-active" class="btn btn-success btn-sm"> Agregar </a>
+</div>
+
+<!-- TABLA -->
+<div class="table-responsive">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover table-striped">
+        <thead class=".thead-dark">
+            <tr>
+                <th>No. Arete </th>
+                <th>No. Animal </th>
+                <th>Edad </th>
+                <th>Sexo </th>
+                <th>Tipo </th>
+                <th>Color</th>
+                <th>Situación </th>
+                <th>Crianza / Compra </th>
+                <th>Acciones </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of animales">
+                <td>{{ row.noArete }}</td>
+                <td>{{ row.noAnimal }}</td>
+                <td>{{ row.edad }}</td>
+                <td>{{ sexos[row.sexo].text }}</td>
+                <td>{{ tipos[row.tipo].text }}</td>
+                <td>{{ colores[row.color].text }}</td>
+                <td>{{ situaciones[row.situacion].text }}</td>
+                <td>{{ crianzasCompras[row.crianzaCompra].text }}</td>
+                <td class="td-actions ">
+                    <a rel="tooltip" title="Ver detalles" (click)="showDetail(row)" class="btn btn-primary btn-sm mr-2">
+                        <i class="fa fa-eye fa-sm"></i>
+                    </a>
+                    <a rel="tooltip" title="Editar" class="btn btn-success btn-sm mr-2">
+                        <i class="fa fa-pencil-alt fa-sm"></i>
+                    </a>
+                    <a rel="tooltip" title="Eliminar" class="btn btn-danger btn-sm">
+                        <i class="fa fa-times-circle fa-sm"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
