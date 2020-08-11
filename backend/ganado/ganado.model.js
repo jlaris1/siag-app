@@ -10,7 +10,13 @@ const Schema = mongoose.Schema;
     color: ColoresEnum;
     estatus: EstatusEnum;
     situacion: SituacionEnum;
-    crianzaCompra: CrianzaCompraEnum;*/
+    crianzaCompra: CrianzaCompraEnum;
+    observaciones: string;    
+    kgs: number;
+    fecha_empadre: Date;
+    fecha_cargado: Date;
+    fecha_palpacion: Date;
+*/
 
 
 const ganadoSchema = new Schema({
@@ -54,6 +60,25 @@ const ganadoSchema = new Schema({
     observaciones: {
         type: String,
         required: false
+    },
+    kgs: {
+        type: Number,
+        required: true
+    },
+    fecha_empadre: {
+        type: Date,
+        required: false,
+        default: new Date()
+    },
+    fecha_cargado: {
+        type: Date,
+        required: false,
+        default: new Date()
+    },
+    fecha_palpacion: {
+        type: Date,
+        required: false,
+        default: new Date()
     }
 }, {
     timestamps: true

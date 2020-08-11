@@ -1,6 +1,16 @@
 
-<div class="text-right mb-2">
-    <a [routerLink]="['./new']" routerLinkActive="router-link-active" class="btn btn-success btn-sm"> Agregar </a>
+<div class="d-flex justify-content-between mb-3" style="border-bottom: 3px solid #EFB810;">
+    <div class="word">
+        <span>G</span>
+        <span>A</span>
+        <span>N</span>
+        <span>A</span>
+        <span>D</span>
+        <span>O</span>
+    </div>
+    <div class="text-right mb-2">
+        <a [routerLink]="['./new']" routerLinkActive="router-link-active" class="btn btn-success btn-sm"> Agregar </a>
+    </div>
 </div>
 
 <!-- TABLA -->
@@ -12,32 +22,69 @@
                 <th>No. Animal </th>
                 <th>Edad </th>
                 <th>Sexo </th>
-                <th>Tipo </th>
+                <th>Clasificación </th>
                 <th>Color</th>
-                <th>Situación </th>
+                <th>Estado</th>
                 <th>Crianza / Compra </th>
+                <th>Observaciones</th>
                 <th>Acciones </th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let row of animales">
-                <td>{{ row.noArete }}</td>
-                <td>{{ row.noAnimal }}</td>
+                <td>
+                    <strong>
+                        {{ row.noArete }}
+                    </strong>
+                </td>
+                <td>
+                    <strong>
+                        <i>{{ row.noAnimal }}</i>
+                    </strong>
+                </td>
                 <td>{{ row.edad }}</td>
                 <td>{{ sexos[row.sexo].text }}</td>
                 <td>{{ tipos[row.tipo].text }}</td>
                 <td>{{ colores[row.color].text }}</td>
-                <td>{{ situaciones[row.situacion].text }}</td>
-                <td>{{ crianzasCompras[row.crianzaCompra].text }}</td>
+                <td>
+                    <span class="badge" [ngClass]="{ 
+                        '0': 'product-new-label',
+                        '1': 'product-new-label-1',
+                        '2': 'product-new-label-2',
+                        '3': 'product-new-label-3',
+                        '4': 'product-new-label-4',
+                        '5': 'product-new-label-5',
+                        '6': 'product-new-label-6',
+                        '7': 'product-new-label-7'}[row.situacion]"> 
+                        {{ situaciones[row.situacion].text }}
+                    </span>
+                </td>
+                <td>
+                    <span class="badge" [ngClass]="{ 
+                        '0': 'badge-success',
+                        '1': 'badge-primary'}[row.crianzaCompra]"> 
+                        {{ crianzasCompras[row.crianzaCompra].text }}
+                    </span>    
+                </td>
+                <td> {{ row.Observaciones }} </td>
                 <td class="td-actions ">
-                    <a rel="tooltip" title="Ver detalles" (click)="showDetail(row)" class="btn btn-primary btn-sm mr-2">
-                        <i class="fa fa-eye fa-sm"></i>
+                    <a rel="tooltip" title="Ver detalles" [routerLink]="['./', 'detalles', row._id]" class="btn btn-primary btn-sm mr-1">
+                        <i class="fas fa-eye fa-sm"></i>
                     </a>
-                    <a rel="tooltip" title="Editar" class="btn btn-success btn-sm mr-2">
-                        <i class="fa fa-pencil-alt fa-sm"></i>
+                    <a rel="tooltip" title="Editar" [routerLink]="['./', 'editar', row._id]" class="btn btn-success btn-sm mr-1">
+                        <i class="fas fa-pencil-alt fa-sm"></i>
                     </a>
-                    <a rel="tooltip" title="Eliminar" class="btn btn-danger btn-sm">
-                        <i class="fa fa-times-circle fa-sm"></i>
+                    <a rel="tooltip" title="Fecha palpación" (click)="onPalpado(row)" class="btn btn-palpado btn-sm mr-1">
+                        <i class="far fa-hand-point-left fa-sm"></i>
+                    </a>
+                    <a rel="tooltip" title="Fecha empadre" (click)="onEmpadre(row)" class="btn btn-move btn-sm mr-1">
+                        <i class="fas fa-people-carry fa-sm"></i>
+                    </a>
+                    <a rel="tooltip" title="Fecha cargada" (disabled)="row.situacion == 5" (click)="onCargada(row)" class="btn btn-cargado btn-sm mr-1">
+                        <i class="fas fa-heart fa-sm"></i>
+                    </a>
+                    <a rel="tooltip" title="Eliminar" (click)="onDelete(row._id)" class="btn btn-danger btn-sm">
+                        <i class="fas fa-times-circle fa-sm"></i>
                     </a>
                 </td>
             </tr>

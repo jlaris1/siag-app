@@ -2,5 +2,6 @@ export enum TiposEnum {
     Vaca,
     Toro,
     Vaquilla,
-    Becerro
+    Becerro,
+    Novillo
 }

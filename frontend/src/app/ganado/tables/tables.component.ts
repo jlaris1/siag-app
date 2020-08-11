@@ -13,7 +13,7 @@ import { Subject } from 'rxjs';
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
-  styleUrls: ['./tables.component.scss']
+  styleUrls: ['./tables.component.css']
 })
 
 export class GanadoComponent implements OnInit {
@@ -152,6 +152,45 @@ export class GanadoComponent implements OnInit {
             });
             FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
         });*/
+    }
+
+    onEmpadre(model: Vaca): void {
+        this.ganadoService.empadre(model)
+            .then( response => {
+                console.log(response);
+            })
+            .catch( error => {
+                console.log(error);
+            }
+        );
+    }
+
+    onCargada(model: Vaca): void {
+        model.situacion = SituacionEnum.Cargada;
+
+        this.ganadoService.cargada(model)
+            .then( response => {
+                console.log(response);
+            })
+            .catch( error => {
+                console.log(error);
+            }
+        );
+    }
+
+    onPalpado(model: Vaca): void {
+        this.ganadoService.palpado(model)
+            .then( response => {
+                console.log(response);
+            })
+            .catch( error => {
+                console.log(error);
+            }
+        );
+    }
+
+    onDelete(id: string): void {
+        alert("eliminada")
     }
 
 }

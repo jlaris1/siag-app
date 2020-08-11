@@ -7,6 +7,7 @@ import { Vaca } from 'src/app/common/entities/vaca';
 @Injectable()
 export class GanadoService {
     LOCAL_SERVER: string = 'http://localhost:3000';  
+    //LOCAL_SERVER: string = 'http://localhost:3000';  
 
     constructor(
         private httpClient: HttpClient
@@ -21,6 +22,23 @@ export class GanadoService {
     }
 
     get(id: string): Promise<Vaca> {
-        return this.httpClient.get<Vaca>(`${this.LOCAL_SERVER}/${id}`).toPromise();
+        return this.httpClient.get<Vaca>(`${this.LOCAL_SERVER}/ganado/detalles?id=${id}`).toPromise();
     }
+
+    update(id: string, model: Vaca,): Promise<any> {
+        return this.httpClient.put<any>(`${this.LOCAL_SERVER}/ganado/update/${id}`, model).toPromise();
+    }
+
+    palpado(model: Vaca): any {
+        return this.httpClient.post<any>(`${this.LOCAL_SERVER}/ganado/palpado`, model).toPromise();
+    }
+
+    empadre(model: Vaca): any {
+        return this.httpClient.post<any>(`${this.LOCAL_SERVER}/ganado/empadre`, model).toPromise();
+    }
+
+    cargada(model: Vaca): any {
+        return this.httpClient.post<any>(`${this.LOCAL_SERVER}/ganado/cargada`, model).toPromise();
+    }
+
 }

@@ -4,6 +4,7 @@ import { TiposEnum } from '../enums/tipos';
 import { SituacionEnum } from '../enums/situaciones';
 import { EstatusEnum } from '../enums/estatus';
 import { CrianzaCompraEnum } from '../enums/crianzaCompra';
+import { InseminacionNaturalEnum } from '../enums/inseminacionNatural';
 
 export class Vaca {
     ID: number;
@@ -16,4 +17,10 @@ export class Vaca {
     estatus: EstatusEnum;
     situacion: SituacionEnum;
     crianzaCompra: CrianzaCompraEnum;
+    observaciones: string;
+    kgs: number;
+    fecha_empadre: Date;
+    fecha_cargado: Date;
+    fecha_palpacion: Date;
+    inseminacionNatural: InseminacionNaturalEnum;
 }

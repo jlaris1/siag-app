@@ -9,10 +9,12 @@ ganadoSchema.statics = {
   getAll: function(query, cb) {
     ganadoModel.find({},{},query, cb);
   },
-  get: function(cb) {
-    this.find(cb);
+  get: function(id, cb) {
+    this.findOne({"_id": id }, cb);
+  },
+  update: function(data, id, cb) {
+    this.updateOne({"_id": id}, data, cb);
   }
-
 }
 
 const ganadoModel = mongoose.model('Ganado', ganadoSchema);

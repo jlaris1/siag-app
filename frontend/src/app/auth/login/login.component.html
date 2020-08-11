@@ -1,19 +1,49 @@
-<div class="container">
-  <div class="login">
-    <div class="login-triangle"></div>
-
-    <h2 class="login-header">Log in</h2>
-
-    <form #frmLogin="ngForm" class="login-container" (ngSubmit)="onLogin(frmLogin)">
-      <p>
-        <input type="text" name="username" placeholder="Username" ngModel required>
-      </p>
-      <p>
-        <input type="password" name="pass" placeholder="Password" ngModel required>
-      </p>
-      <p>
-        <input type="submit" value="Send">
-      </p>
-    </form>
+<section class="login-block">
+  <div class="container">
+    <div class="row"> 
+      <div class="col-md-4 col-xs-4 login-sec">
+        <h2 class="text-center">Iniciar Sesión</h2>
+        <form class="login-form" #frmLogin="ngForm" (ngSubmit)="onLogin(frmLogin)">
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="text-uppercase">Usuario</label>
+            <input type="text" name="username" ngModel class="form-control" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="text-uppercase">Contraseña</label>
+            <input type="password" name="pass" ngModel class="form-control" placeholder="">
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input">
+              <small>Recordarme</small>
+            </label>
+            <button type="submit" class="btn btn-login float-right">Iniciar</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-8 col-xs-4 banner-sec">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item carousel-item-next carousel-item-left">
+              <img class="d-block img-fluid" src="../../../assets/img/img-0.jpg" alt="First slide">
+              <div class="carousel-caption d-none d-md-block"></div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block img-fluid"  src="../../../assets/img/img-1.jpg" alt="Second slide">
+              <div class="carousel-caption d-none d-md-block"></div>
+            </div>
+            <div class="carousel-item active carousel-item-left">
+              <img class="d-block img-fluid"  src="../../../assets/img/img-2.jpg" alt="Third slide">
+              <div class="carousel-caption d-none d-md-block"></div>
+            </div>
+          </div>	   
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>

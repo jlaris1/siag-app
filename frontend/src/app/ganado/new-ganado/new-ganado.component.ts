@@ -20,6 +20,8 @@ export class NewGanadoComponent implements OnInit {
     
     public form: FormGroup;
     vaca: Vaca = new Vaca();
+    id: string;
+    isEdition: boolean = false;
     
     //ENUMS
     sexos: any[] = [];
@@ -51,6 +53,14 @@ export class NewGanadoComponent implements OnInit {
 
     ngOnInit() { 
         this.initData();
+
+        // Get productId from the url
+        this.id = this.route.snapshot.paramMap.get('id');
+
+        if(this.id && this.id != ''){   
+            this.isEdition = true;
+            this.get(this.id);
+        }
     }
 
     initData(): void {
@@ -101,19 +111,45 @@ export class NewGanadoComponent implements OnInit {
     submit(): void {
         const model = this.form.getRawValue();
 
-        this.ganadoService.save(model)
-          .then( response => {
-              console.log(response);
-              //this.form.markAsPristine();
-              //this.handleSuccess();
-          })
-          .catch( error => {
-            //this.errorHandler.handle(error);
-          }
+        console.log(model);
+
+        if(this.isEdition){
+            this.ganadoService.update(this.id, model)
+                .then( response => {
+                    console.log(response);
+                })
+                .catch( error => {
+
+                }
+            );
+        } else {
+            this.ganadoService.save(model)
+                .then( response => {
+                    console.log(response);
+                })
+                .catch( error => {
+
+                }
+            );
+        }
+    }
+
+    private get(productId: string) {
+        this.ganadoService.get(productId)
+            .then( response => {
+                return this.form.patchValue(response);
+            })
+            .catch( error => {
+
+            }
         );
     }
 
     private back() {
-      this.router.navigate(['../'], { relativeTo: this.route });
+        if(this.isEdition) {
+            this.router.navigate(['../../'], { relativeTo: this.route });
+        } else {
+            this.router.navigate(['../'], { relativeTo: this.route });
+        }
     }
 }

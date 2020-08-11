@@ -17,10 +17,24 @@ const routes: Routes = [
         {
           path: 'ganado/new',
           component: NewGanadoComponent
-        }  
+        },
+        {
+          path: 'ganado/editar/:id',
+          component: NewGanadoComponent
+        },  
+        {
+          path: 'ganado/palpacion/:id',
+          component: GanadoComponent
+        },
+        {
+          path: 'ganado/empadre/:id',
+          component: GanadoComponent
+        },
+        {
+          path: 'ganado/cargada/:id',
+          component: GanadoComponent
+        }
   ]},
-  
-   
 ];
 
 @NgModule({

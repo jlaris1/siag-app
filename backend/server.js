@@ -1,14 +1,12 @@
 'use strict'
 const cors = require('cors');
-
 const authRoutes = require('./auth/auth.routes');
 const ganadoRoutes = require('./ganado/ganado.routes');
-
-const express = require('express');    
+const express = require('express');
+const propierties = require('./config/properties');
 const PORT = require('./config/properties').PORT; 
-
 const DB = require('./config/db');
-// Init DB
+// init DB
 DB();
 
 const app = express();

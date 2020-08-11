@@ -1,18 +1,18 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row min-vh-100 flex-column flex-md-row">
         <aside class="col-12 col-md-2 p-0 bg-dark flex-shrink-1">
             <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
-                <div class="col-12">
-                    <img style="width: 100%;" src="../../assets/img/rancho_la_tuna_logo.png">
+                <div class="row">
+                    <img style="width: 100%; left: 0;" src="../../assets/img/rancho_la_tuna_logo.png">
                 </div>
                               
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
                     <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" [routerLink]="['./']" >Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" [routerLink]="['./ganado']" routerLinkActive="router-link-active" >Ganado</a>
@@ -31,7 +31,8 @@
               </nav>
         </aside>
         <main class="col bg-faded py-3 flex-grow-1">
-            <router-outlet></router-outlet>
+            <router-outlet>
+            </router-outlet>
         </main>
     </div>
 </div>

@@ -11,10 +11,18 @@ import { GanadoService } from '../ganado/services/ganado.service';
 import { AccordionModule } from 'primeng/accordion';
 import { TableModule } from 'primeng/table';
 import { DataTablesModule } from 'angular-datatables';
- 
+import { ParicionesComponent } from '../pariciones/list/pariciones.component';
+import { DashBoardComponent } from '../auth/dashboard/dashboard.component';
+
 
 @NgModule({
-  declarations: [ HomeComponent, DetallesGanadoComponent, GanadoComponent, NewGanadoComponent],
+  declarations: [ 
+    HomeComponent, 
+    DetallesGanadoComponent, 
+    GanadoComponent, 
+    NewGanadoComponent, 
+    ParicionesComponent,
+    DashBoardComponent],
   imports: [
     CommonModule,
     FormsModule,
