@@ -6,6 +6,7 @@ const express = require('express');
 const propierties = require('./config/properties');
 const PORT = require('./config/properties').PORT; 
 const DB = require('./config/db');
+const http = require('http');
 // init DB
 DB();
 
@@ -30,4 +31,7 @@ router.get('/', (req, res) => {
 });
 
 app.use(router);
-app.listen(PORT, () => console.log(`Server runing on port ${PORT}`));
+
+http.createServer(app).listen(PORT, () => console.log(`Server runing on port ${PORT}`));
+
+//app.listen(PORT, () => console.log(`Server runing on port ${PORT}`));
