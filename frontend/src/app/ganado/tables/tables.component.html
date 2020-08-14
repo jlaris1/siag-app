@@ -1,5 +1,4 @@
-
-<div class="d-flex justify-content-between mb-3" style="border-bottom: 3px solid #EFB810;">
+<div class="div-title">
     <div class="word">
         <span>G</span>
         <span>A</span>
@@ -12,6 +11,8 @@
         <a [routerLink]="['./new']" routerLinkActive="router-link-active" class="btn btn-success btn-sm"> Agregar </a>
     </div>
 </div>
+<div></div>
+<div class="hr-border"></div>
 
 <!-- TABLA -->
 <div class="table-responsive">
@@ -24,6 +25,7 @@
                 <th>Sexo </th>
                 <th>Clasificación </th>
                 <th>Color</th>
+                <th> Kgs </th>
                 <th>Estado</th>
                 <th>Crianza / Compra </th>
                 <th>Observaciones</th>
@@ -46,6 +48,7 @@
                 <td>{{ sexos[row.sexo].text }}</td>
                 <td>{{ tipos[row.tipo].text }}</td>
                 <td>{{ colores[row.color].text }}</td>
+                <td>{{ row.kgs }} </td>
                 <td>
                     <span class="badge" [ngClass]="{ 
                         '0': 'product-new-label',
@@ -80,9 +83,12 @@
                     <a rel="tooltip" title="Fecha empadre" (click)="onEmpadre(row)" class="btn btn-move btn-sm mr-1">
                         <i class="fas fa-people-carry fa-sm"></i>
                     </a>
-                    <a rel="tooltip" title="Fecha cargada" (disabled)="row.situacion == 5" (click)="onCargada(row)" class="btn btn-cargado btn-sm mr-1">
+                    <button rel="tooltip" title="Fecha cargada" [disabled]="row.situacion == 5" (click)="onCargada(row)" class="btn product-new-label-5 btn-sm mr-1">
                         <i class="fas fa-heart fa-sm"></i>
-                    </a>
+                    </button>
+                    <button rel="tooltip" title="Parición" [disabled]="row.situacion != 5" (click)="onCargada(row)" class="btn product-new-label btn-sm mr-1">
+                        <i class="fas fa-baby fa-sm"></i>
+                    </button>
                     <a rel="tooltip" title="Eliminar" (click)="onDelete(row._id)" class="btn btn-danger btn-sm">
                         <i class="fas fa-times-circle fa-sm"></i>
                     </a>

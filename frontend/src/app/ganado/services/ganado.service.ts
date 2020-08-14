@@ -6,8 +6,8 @@ import { Vaca } from 'src/app/common/entities/vaca';
 
 @Injectable()
 export class GanadoService {
-    // LOCAL_SERVER: string = 'http://localhost:3000';   // <-- for local instance
-    LOCAL_SERVER: string = 'http://35.236.85.39/:3000';  // <-- for production server
+     LOCAL_SERVER: string = 'http://localhost:3000';   // <-- for local instance
+    //LOCAL_SERVER: string = 'http://35.236.85.39/:3000';  // <-- for production server
 
     constructor(
         private httpClient: HttpClient

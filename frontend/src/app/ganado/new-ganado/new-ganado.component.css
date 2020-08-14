@@ -43,10 +43,10 @@
 
 .btnRegister{
     float: right;
-    margin-top: 15%;
+    margin-top: 10%;
     border: none;
     border-radius: 1.5rem;
-    padding: 0.5%;
+    padding: 0.4%;
     background: #EFB810;
     color: #000;
     font-weight: 600;
@@ -56,10 +56,10 @@
 
 .btnCancel{
     float: right;
-    margin-top: 15%;
+    margin-top: 10%;
     border: none;
     border-radius: 1.5rem;
-    padding: 0.5%;
+    padding: 0.4%;
     background: #000;
     color: #EFB810;
     font-weight: 600;

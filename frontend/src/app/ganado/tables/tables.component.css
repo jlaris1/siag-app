@@ -1,9 +1,31 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|Roboto');
 
+.div-title {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background: #231f20;
+    height: 80px;
+}
+
+.hr-border {
+    padding: 8px 0;
+    border-width: 10px 0 0;
+    border-top-style: solid;
+    -o-border-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff) 3;
+    border-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff) 3;
+}
+
 /*** titulo **/
 .word {
 	font-family: 'Anton', sans-serif;
 	perspective: 1000px; 
+	color: whitesmoke;
 }
 
 table {
@@ -13,9 +35,9 @@ table {
 .word span {
 	cursor: pointer;
 	display: inline-block;
-	font-size: 50px;
+	font-size: 40px;
 	user-select: none;
-	line-height: .8;
+	line-height: 1;
 }
 
 .word span:nth-child(1).active {
@@ -117,7 +139,7 @@ table {
     background-color:#ef5777;
 }
 
-.btn-cargado {
+.btn-parida {
     color:#fff;
     background-color:#ef5777;
 }
@@ -153,6 +175,11 @@ table {
 }
 
 .product-new-label-5{
+    color:#fff;
+    background-color: #920909;
+}
+
+.btn-cargada{
     color:#fff;
     background-color: #920909;
 }

@@ -160,6 +160,7 @@ exports.cargada = (req, res, next) => {
         noArete: req.body.noArete,
         noAnimal: req.body.noAnimal,
         edad: req.body.edad,
+        situacion: req.body.situacion
     }
 
     Cargada.create(addCargado, (error,  ganado) =>{
@@ -169,11 +170,13 @@ exports.cargada = (req, res, next) => {
             noArete: ganado.noArete,
             noAnimal: ganado.noArete,
             edad: ganado.edad,
+            situacion: ganado.situacion
         }
         
         // Actualizar estatus del animal
-        Ganado.update({situacion: req.body.situacion}, req.body.id,(error,  ganado) =>{
+        Ganado.update({situacion: req.body.situacion}, req.body._id, (error,  ganado) =>{
             if(error) return res.status(500).send('Server error ' + error);
+            console.log(ganado);
         });
         
 
