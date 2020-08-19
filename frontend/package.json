@@ -23,6 +23,7 @@
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@types/datatables.net-buttons": "^1.4.3",
     "angular-datatables": "^9.0.2",
+    "angular-notifier": "^6.0.1",
     "boostrap": "^2.0.0",
     "bootstrap": "^4.5.0",
     "core-js": "^3.6.5",

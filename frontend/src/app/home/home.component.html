@@ -18,19 +18,20 @@
                       <a class="nav-link" [routerLink]="['./ganado']" routerLinkActive="router-link-active" >Ganado</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="#">Pariciones</a>
+                      <a class="nav-link" [routerLink]="['./pariciones']" routerLinkActive="router-link-active">Pariciones</a>
                     </li>
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a class="nav-link disabled" href="#">Ventas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#">Compras</a>
-                    </li>
+                    </li>-->
                   </ul>
                 </div>
               </nav>
         </aside>
-        <main class="col" >
+        <main class="col">
+          <notifier-container></notifier-container>
           <router-outlet></router-outlet>
         </main>
     </div>

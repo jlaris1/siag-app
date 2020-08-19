@@ -9,6 +9,7 @@ import { SituacionEnum } from '../../common/enums/situaciones';
 import { CrianzaCompraEnum } from '../../common/enums/crianzaCompra';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { NotifierService } from "angular-notifier";
 
 @Component({
     selector: 'new-ganado-app',
@@ -35,7 +36,8 @@ export class NewGanadoComponent implements OnInit {
         private readonly ganadoService: GanadoService,
         private readonly route: ActivatedRoute,
         private readonly router: Router,
-        public fb: FormBuilder
+        public fb: FormBuilder,
+        private readonly notifier: NotifierService
     ) { 
         this.form = fb.group({
             noArete: ['', [Validators.required]],
@@ -116,19 +118,21 @@ export class NewGanadoComponent implements OnInit {
         if(this.isEdition){
             this.ganadoService.update(this.id, model)
                 .then( response => {
+                    this.notifier.notify("success", "Se creo correctamente el nuevo animal");
                     console.log(response);
                 })
                 .catch( error => {
-
+                    this.notifier.notify("error", error.error);
                 }
             );
         } else {
             this.ganadoService.save(model)
                 .then( response => {
+                    this.notifier.notify("success", "Se creo actualizó el nuevo animal");
                     console.log(response);
                 })
                 .catch( error => {
-
+                    this.notifier.notify("error", error.error);
                 }
             );
         }

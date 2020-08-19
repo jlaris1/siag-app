@@ -4,10 +4,14 @@ import { TiposEnum } from '../enums/tipos';
 import { SituacionEnum } from '../enums/situaciones';
 import { EstatusEnum } from '../enums/estatus';
 import { CrianzaCompraEnum } from '../enums/crianzaCompra';
-import { InseminacionNaturalEnum } from '../enums/inseminacionNatural';
 
-export class Vaca {
-    ID: string;
+export class Paricion {
+    idMadre: number;
+    noAreteM: number;
+    noAnimalM: number;
+    edadM: string;
+    situacionM: SituacionEnum;
+    estadoM: TiposEnum;
     noArete: number;
     noAnimal: number;
     edad: string;
@@ -19,8 +23,4 @@ export class Vaca {
     crianzaCompra: CrianzaCompraEnum;
     observaciones: string;
     kgs: number;
-    fecha_empadre: Date;
-    fecha_cargado: Date;
-    fecha_palpacion: Date;
-    inseminacionNatural: InseminacionNaturalEnum;
 }

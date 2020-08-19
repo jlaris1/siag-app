@@ -1,3 +1,4 @@
+<!-- TITLE -->
 <div class="div-title">
     <div class="word">
         <span>G</span>
@@ -45,7 +46,7 @@
                     </strong>
                 </td>
                 <td>{{ row.edad }}</td>
-                <td>{{ sexos[row.sexo].text }}</td>
+                <td>{{ sexos[row.sexo].text == 'Macho' ? 'M' : 'H' }}</td>
                 <td>{{ tipos[row.tipo].text }}</td>
                 <td>{{ colores[row.color].text }}</td>
                 <td>{{ row.kgs }} </td>
@@ -69,7 +70,7 @@
                         {{ crianzasCompras[row.crianzaCompra].text }}
                     </span>    
                 </td>
-                <td> {{ row.Observaciones }} </td>
+                <td> {{ row.observaciones }} </td>
                 <td class="td-actions ">
                     <a rel="tooltip" title="Ver detalles" [routerLink]="['./', 'detalles', row._id]" class="btn btn-primary btn-sm mr-1">
                         <i class="fas fa-eye fa-sm"></i>
@@ -83,10 +84,11 @@
                     <a rel="tooltip" title="Fecha empadre" (click)="onEmpadre(row)" class="btn btn-move btn-sm mr-1">
                         <i class="fas fa-people-carry fa-sm"></i>
                     </a>
-                    <button rel="tooltip" title="Fecha cargada" [disabled]="row.situacion == 5" (click)="onCargada(row)" class="btn product-new-label-5 btn-sm mr-1">
+                    <button rel="tooltip" title="Fecha cargada" [disabled]="row.situacion == 5 || row.sexo == 0" (click)="onCargada(row)" class="btn product-new-label-5 btn-sm mr-1">
                         <i class="fas fa-heart fa-sm"></i>
                     </button>
-                    <button rel="tooltip" title="Parición" [disabled]="row.situacion != 5" (click)="onCargada(row)" class="btn product-new-label btn-sm mr-1">
+                    <button rel="tooltip" title="Parición" [disabled]="row.situacion != 5 || row.sexo == 0"
+                    data-toggle="modal" data-target="#exampleModal" (click)="selectedParicion(row)" class="btn product-new-label btn-sm mr-1">
                         <i class="fas fa-baby fa-sm"></i>
                     </button>
                     <a rel="tooltip" title="Eliminar" (click)="onDelete(row._id)" class="btn btn-danger btn-sm">
@@ -96,4 +98,91 @@
             </tr>
         </tbody>
     </table>
+</div>
+
+<!-- MODAL AGREGAR ANIMAL -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agrega nueva parición</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" autocomplete="off">
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>No. arete</label>
+                                <input type="number" class="form-control" formControlName="noArete" placeholder="No. arete" required>
+                            </div>
+                            <div class="form-group">
+                                <label>No. animal</label>
+                                <input type="number" class="form-control" formControlName="noAnimal" placeholder="No. animal" value="michael23" required>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="">Edad</label>
+                                    <input type="text" class="form-control" formControlName="edad" placeholder="Edad" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="">Kgs</label>
+                                    <input type="number" class="form-control" formControlName="kgs" placeholder="Kgs" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Estado</label>
+                                <select id="situacion" class="form-control" formControlName="situacion" placeholder="--Seleccione--" required>
+                                    <option value="-1" disabled selected>--Seleccione--</option>
+                                    <option *ngFor="let item of situaciones" [value]="item.value">{{ item.text }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Compra / Crianza</label>
+                                <select id="crianzaCompra" class="form-control" formControlName="crianzaCompra"  placeholder="--Seleccione--" required>
+                                    <option value="-1" disabled selected>--Seleccione--</option>
+                                    <option *ngFor="let item of crianzasCompras" [value]="item.value">{{ item.text }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Sexo</label>
+                                <select id="sexo" class="form-control" formControlName="sexo" placeholder="--Seleccione--" required>
+                                    <option value="-1" disabled selected>--Seleccione--</option>
+                                    <option *ngFor="let item of sexos" [value]="item.value">{{ item.text }}</option>
+                                </select>
+                            </div>                        
+                            <div class="form-group">
+                                <label>Clasificación</label>
+                                <select id="tipo" class="form-control" formControlName="tipo" placeholder="--Seleccione--" required>
+                                    <option value="-1" disabled selected>--Seleccione--</option>
+                                    <option *ngFor="let item of tipos" [value]="item.value">{{ item.text }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Color</label>
+                                <select id="color" class="form-control" formControlName="color"  placeholder="--Seleccione--" required>
+                                    <option value="-1" disabled selected>--Seleccione--</option>
+                                    <option *ngFor="let item of colores" [value]="item.value">{{ item.text }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Observaciones</label>
+                                <textarea rows="5" class="form-control" formControlName="observaciones" placeholder="Observaciones"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="onParicion()" > Guardar</button>
+            </div>
+        </div>
+    </div>
 </div>

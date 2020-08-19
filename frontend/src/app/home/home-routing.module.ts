@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { DetallesGanadoComponent } from '../ganado/detalles.component';
 import { GanadoComponent } from '../ganado/tables/tables.component';
 import { NewGanadoComponent } from '../ganado/new-ganado/new-ganado.component';
+import { ParicionesComponent } from '../pariciones/list/pariciones.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, 
@@ -33,6 +34,10 @@ const routes: Routes = [
         {
           path: 'ganado/cargada/:id',
           component: GanadoComponent
+        },
+        {
+          path: 'pariciones',
+          component: ParicionesComponent
         }
   ]},
 ];

@@ -14,6 +14,9 @@ ganadoSchema.statics = {
   },
   update: function(data, id, cb) {
     this.updateOne({"_id": id}, data, cb);
+  },
+  delete: function(id, cb){
+    this.deleteOne({"_id": id}, cb);
   }
 }
 

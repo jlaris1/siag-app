@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, ViewChild, ElementRef } from '@angular/core';
 import { Vaca } from '../../common/entities/vaca';
 import { ColoresEnum } from '../../common/enums/colores';
 import { SexoEnum } from '../../common/enums/sexo';
@@ -10,6 +10,8 @@ import { GanadoService } from '../services/ganado.service';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
     selector: 'app-tables',
@@ -21,7 +23,7 @@ export class GanadoComponent implements OnInit {
     page: number = 1;
     size: number = 10;
 
-    selected: Vaca;
+    selected: any;
 
     sexos: any[] = [];
     estatus: any[] = [];
@@ -30,7 +32,7 @@ export class GanadoComponent implements OnInit {
     situaciones: any[] = [];
     crianzasCompras: any[] = [];
 
-    
+    public form: FormGroup;
 
     /** TABLES **/
     animales: Vaca[] = [];
@@ -38,6 +40,8 @@ export class GanadoComponent implements OnInit {
 
 
     @ViewChild(DataTableDirective)
+    @ViewChild('closeBtn') closeBtn: ElementRef;
+    
     dtElement: DataTableDirective;
     dtTrigger: Subject<any> = new Subject();
 
@@ -45,7 +49,23 @@ export class GanadoComponent implements OnInit {
         private readonly ganadoService: GanadoService,
         private readonly route: ActivatedRoute,
         private readonly router: Router,
-    ) { }
+        private readonly notifier: NotifierService,
+        public fb: FormBuilder
+        ) { 
+            this.form = fb.group({
+                noArete: ['', [Validators.required]],
+                noAnimal: ['', [Validators.required]],
+                edad: ['', [Validators.required]],
+                sexo: ['', [Validators.required]],
+                kgs: ['', [Validators.required]],
+                tipo: ['', [Validators.required]],
+                color: ['', [Validators.required]],
+                situacion: ['', [Validators.required]],
+                crianzaCompra: ['', [Validators.required]],
+                observaciones: []
+            });
+    
+        }
 
     ngOnInit() {
 
@@ -160,10 +180,12 @@ export class GanadoComponent implements OnInit {
     onEmpadre(model: Vaca): void {
         this.ganadoService.empadre(model)
             .then( response => {
+                this.notifier.notify("success", "Se actualizó correctamente la fecha de empadre del animal");
                 this.router.navigate['/ganado'];
                 console.log(response);
             })
             .catch( error => {
+                this.notifier.notify("error", error.error);
                 console.log(error);
             }
         );
@@ -174,10 +196,12 @@ export class GanadoComponent implements OnInit {
 
         this.ganadoService.cargada(model)
             .then( response => {
+                this.notifier.notify("success", "Se actualizó correctamente el estatus del animal a CARGADA");
                 this.router.navigate['/ganado'];
                 console.log(response);
             })
             .catch( error => {
+                this.notifier.notify("error", error.error);
                 console.log(error);
             }
         );
@@ -186,10 +210,12 @@ export class GanadoComponent implements OnInit {
     onPalpado(model: Vaca): void {
         this.ganadoService.palpado(model)
             .then( response => {
+                this.notifier.notify("success", "Se actualizó correctamente la fecha de palpado del animal");
                 this.router.navigate['/ganado'];
                 console.log(response);
             })
             .catch( error => {
+                this.notifier.notify("error", error.error);
                 console.log(error);
             }
         );
@@ -198,6 +224,42 @@ export class GanadoComponent implements OnInit {
     onDelete(id: string): void {
         this.router.navigate['/ganado'];
         alert("eliminada")
+    }
+
+    private closeModal(): void {
+        this.closeBtn.nativeElement.click();
+    }
+
+    onParicion(): void {
+        const model = this.form.getRawValue();
+        console.log(model);
+
+        model.idMadre = this.selected._id;
+        model.noAreteM = this.selected.noArete;
+        model.noAnimalM = this.selected.noAnimal;
+        model.edadM = this.selected.edad
+        model.situacionM = SituacionEnum.Parida;
+
+        if(this.selected.tipo == TiposEnum.Vaquilla){
+            model.estadoM = TiposEnum.Vaca;
+        }
+
+        this.ganadoService.parida(model)
+            .then( response => {
+                this.notifier.notify("success", "Se creo correctamente el nuevo animal");
+                this.router.navigate['/ganado'];
+                this.closeModal();
+                console.log(response);
+            })
+            .catch( error => {
+                this.notifier.notify("error", error.error);
+                console.log(error);
+            }
+        );
+    }
+
+    selectedParicion(item: any): void {
+        this.selected = item;
     }
 
 }

@@ -1,12 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { StylesCompileDependency } from '@angular/compiler';
 
 @Component({
     selector: 'app-pariciones',
-    templateUrl: 'pariciones.component.html'
+    templateUrl: 'pariciones.component.html',
+    styleUrls: ['pariciones.component.css']
 })
 
 export class ParicionesComponent implements OnInit {
-    constructor() { }
+    constructor(
+
+    ) { }
 
     ngOnInit() { }
+
+
+    getAll(): void {
+
+    }
+
+    
 }

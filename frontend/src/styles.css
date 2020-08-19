@@ -26,6 +26,8 @@
 @import '../node_modules/datatables.net-dt/css/jquery.dataTables.css';
 @import '../node_modules/datatables.net-fixedcolumns-dt/css/fixedColumns.dataTables.min.css';
 
+@import "~angular-notifier/styles";
+
 
 body {
   /*background: #456;*/

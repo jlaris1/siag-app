@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NotifierModule } from "angular-notifier";
 
 
 @NgModule({
@@ -14,7 +15,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NotifierModule.withConfig({
+        // Custom options in here
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

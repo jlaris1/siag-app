@@ -7,9 +7,10 @@ module.exports = (router) => {
     router.get('/ganado/editar/', Ganado.get);
     router.put('/ganado/update/:id', Ganado.update);
 
-    //router.post('/ganado/palpado/', Ganado.palpado);
-    //router.post('/ganado/empadre/', Ganado.empadre);
+    router.post('/ganado/palpado/', Ganado.palpado);
+    router.post('/ganado/empadre/', Ganado.empadre);
     router.post('/ganado/cargada/', Ganado.cargada);
-    //router.post('/ganado/delete/:id', Ganado.delete);
+    router.post('/ganado/delete/:id', Ganado.delete);
+    router.post('/ganado/parida', Ganado.paricion);
 
 };
