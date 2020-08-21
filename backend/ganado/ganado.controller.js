@@ -258,3 +258,12 @@ exports.delete = (req, res, next) => {
         res.send(ganado);
     });
 }
+
+exports.pariciones = (req, res, next) => {
+    var id = req.query.id;
+
+    Paricion.getAll(id, (error, data) => {
+        if(error) return res.status(500).send('Server error: ' + error);
+        res.send(data);
+    });
+}

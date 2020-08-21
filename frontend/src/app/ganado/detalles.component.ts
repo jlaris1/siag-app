@@ -26,6 +26,7 @@ export class DetallesGanadoComponent implements OnInit {
     tipos: any[] = [];
     situaciones: any[] = [];
     crianzasCompras: any[] = [];
+    pariciones: any[] = [];
 
 
     constructor(
@@ -41,6 +42,7 @@ export class DetallesGanadoComponent implements OnInit {
         
         if(this.id){
             this.get(this.id);
+            this.getPariciones(this.id);
         }
     }
 
@@ -87,6 +89,16 @@ export class DetallesGanadoComponent implements OnInit {
             .then( res => {
                 res.observaciones = res.observaciones == null ? '' : res.observaciones;
                 this.animal = res;
+            })
+            .catch( error => {
+                console.log(error);
+            });
+    }
+
+    getPariciones(id: string): void {
+        this.ganadoService.getPariciones(id)
+            .then( res => {
+                this.pariciones = res;
             })
             .catch( error => {
                 console.log(error);

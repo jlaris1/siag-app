@@ -46,7 +46,13 @@
                     </strong>
                 </td>
                 <td>{{ row.edad }}</td>
-                <td>{{ sexos[row.sexo].text == 'Macho' ? 'M' : 'H' }}</td>
+                <td>
+                    <span class="badge" [ngClass]="{ 
+                        '0': 'badge-primary',
+                        '1': 'product-new-label'}[row.sexo]"> 
+                        {{ sexos[row.sexo].text == 'Macho' ? 'M' : 'H' }}
+                    </span>
+                </td>
                 <td>{{ tipos[row.tipo].text }}</td>
                 <td>{{ colores[row.color].text }}</td>
                 <td>{{ row.kgs }} </td>
@@ -91,6 +97,14 @@
                     data-toggle="modal" data-target="#exampleModal" (click)="selectedParicion(row)" class="btn product-new-label btn-sm mr-1">
                         <i class="fas fa-baby fa-sm"></i>
                     </button>
+                    <a rel="tooltip" title="Murio" (click)="onDeath(row._id)" class="btn btn-warning btn-sm mr-1">
+                        <i class="fas fa-skull-crossbones
+                        fa-sm"></i>
+                    </a>
+                    <a rel="tooltip" title="Enferma" (click)="onSick(row._id)" class="btn btn-seconday btn-sm mr-1">
+                        <i class="fas fa-hand-holding-medical
+                        fa-sm"></i>
+                    </a>
                     <a rel="tooltip" title="Eliminar" (click)="onDelete(row._id)" class="btn btn-danger btn-sm">
                         <i class="fas fa-times-circle fa-sm"></i>
                     </a>
@@ -134,7 +148,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Estado</label>
-                                <select id="situacion" class="form-control" formControlName="situacion" placeholder="--Seleccione--" required>
+                                <select id="situacion" class="form-control" formControlName="estado" placeholder="--Seleccione--" required>
                                     <option value="-1" disabled selected>--Seleccione--</option>
                                     <option *ngFor="let item of situaciones" [value]="item.value">{{ item.text }}</option>
                                 </select>

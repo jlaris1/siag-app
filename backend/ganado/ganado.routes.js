@@ -13,4 +13,6 @@ module.exports = (router) => {
     router.post('/ganado/delete/:id', Ganado.delete);
     router.post('/ganado/parida', Ganado.paricion);
 
+    router.get('/ganado/pariciones/', Ganado.pariciones);
+
 };
