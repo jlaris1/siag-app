@@ -20,7 +20,7 @@ import { NotifierModule } from "angular-notifier";
         // Custom options in here
     })
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

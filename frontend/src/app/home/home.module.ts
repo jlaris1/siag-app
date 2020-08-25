@@ -12,7 +12,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { TableModule } from 'primeng/table';
 import { DataTablesModule } from 'angular-datatables';
 import { ParicionesComponent } from '../pariciones/list/pariciones.component';
-import { DashBoardComponent } from '../auth/dashboard/dashboard.component';
+import { DashBoardComponent } from '../dashboard/dashboard.component';
 import { NotifierModule, NotifierOptions } from "angular-notifier";
 
 /**
