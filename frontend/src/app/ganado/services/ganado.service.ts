@@ -8,9 +8,9 @@ import { Paricion } from 'src/app/common/entities/paricion';
 
 @Injectable()
 export class GanadoService {
-    LOCAL_SERVER: string = 'http://localhost:80';   // <-- for local instance
+    //LOCAL_SERVER: string = 'http://localhost:80';   // <-- for local instance
     //LOCAL_SERVER: string = 'http://35.236.85.39:80';  // <-- for production server
-    //LOCAL_SERVER: string = 'http://201.107.5.12:3000';
+    LOCAL_SERVER: string = 'http://201.107.5.12:3000';
 
 
     constructor(
