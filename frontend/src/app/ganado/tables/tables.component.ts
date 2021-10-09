@@ -57,6 +57,7 @@ export class GanadoComponent implements OnInit {
                 noAnimal: ['', [Validators.required]],
                 edad: ['', [Validators.required]],
                 sexo: ['', [Validators.required]],
+                estado: ['', [Validators.required]],
                 kgs: ['', [Validators.required]],
                 tipo: ['', [Validators.required]],
                 color: ['', [Validators.required]],

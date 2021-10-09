@@ -24159,6 +24159,7 @@ var GanadoComponent = /** @class */ (function () {
             noAnimal: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_12__["Validators"].required]],
             edad: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_12__["Validators"].required]],
             sexo: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_12__["Validators"].required]],
+            estado: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_12__["Validators"].required]],
             kgs: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_12__["Validators"].required]],
             tipo: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_12__["Validators"].required]],
             color: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_12__["Validators"].required]],
