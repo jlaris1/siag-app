@@ -44,17 +44,7 @@ exports.createGanado = (req, res, next) => {
 
 // Get all ganado
 exports.getAll = (req, res, next) => {
-    var page = parseInt(req.query.page)
-    var size = parseInt(req.query.size)
     var query = {}
-
-    if(page < 0 || page === 0) {
-        result = {'status': 401,'message':'invalid page number,should start with 1'};
-        return res.json(result);
-    }
-
-    query.skip = size * (page - 1)
-    query.limit = size
 
     Ganado.getAll(query, (error, data) => {
         if(error) return res.status(500).send('Server error: ' + error);

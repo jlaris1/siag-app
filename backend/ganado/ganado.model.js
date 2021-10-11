@@ -62,8 +62,7 @@ const ganadoSchema = new Schema({
         required: false
     },
     kgs: {
-        type: Number,
-        required: true
+        type: Number
     },
     fecha_empadre: {
         type: Date,
