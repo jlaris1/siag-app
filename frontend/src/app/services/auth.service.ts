@@ -10,7 +10,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class AuthService {
   //AUTH_SERVER: string = 'http://localhost:80';   // <-- for local instance
   //AUTH_SERVER: string = 'http://35.236.85.39:80';  // <-- for production server
-  AUTH_SERVER: string = 'http://localhost:3000';
+  AUTH_SERVER: string = 'http://201.107.5.12:3000';
   
   authSubject = new BehaviorSubject(false);
   private token: string;
